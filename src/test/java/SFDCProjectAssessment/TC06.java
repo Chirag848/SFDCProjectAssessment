@@ -40,26 +40,46 @@ public class TC06 extends WebdriverUtility{
 		driver.switchTo().activeElement();
 		driver.findElement(By.xpath("(//span[contains(text(),'Post')])[1]")).click();
 		Thread.sleep(2000);
-		
 		driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@class='cke_wysiwyg_frame cke_reset']")));
 		Thread.sleep(2000);
 		driver.findElement(By.cssSelector("body")).sendKeys("Java Programming");
 		Thread.sleep(2000);
-		
-		driver.findElement(By.id("publishersharebutton"));
+		driver.switchTo().defaultContent();
 		driver.switchTo().activeElement();
+		waitforloadthepageElement(driver.findElement(By.id("publishersharebutton")));
 		driver.findElement(By.id("publishersharebutton")).click();
 		Thread.sleep(2000);
 		
 		//Click on file link
+		waitforloadthepageElement(driver.findElement(By.xpath("(//span[contains(text(),'File')])[1]")));
+		driver.findElement(By.xpath("(//span[contains(text(),'File')])[1]")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.id("chatterUploadFileActionPanel")).click();
+		waitforloadthepageElement(driver.findElement(By.id("chatterFile")));
+		//Thread.sleep(5000);
+		driver.findElement(By.id("chatterFile")).sendKeys("C:\\Users\\chirag\\Desktop\\IMP\\uploadfile.docx");
+		Thread.sleep(5000);
 		
+		//Click on Add photo link
 		
-
-
-
-
-
+		WebElement ele2 = driver.findElement(By.xpath("//span[@id='displayBadge']"));
+		Actions act = new Actions(driver);
+		act.moveToElement(ele2).build().perform();
+		driver.findElement(By.id("uploadLink")).click();
+		Thread.sleep(2000);
+		WebElement ele1 = driver.findElement(By.id("uploadPhotoContentId"));
+		driver.switchTo().frame(ele1);
+		Thread.sleep(2000);
+		driver.findElement(By.id("j_id0:uploadFileForm:uploadInputFile")).sendKeys("C:\\Users\\chirag\\Desktop\\IMP\\image.JPG");
+		Thread.sleep(5000);
+		driver.findElement(By.id("j_id0:uploadFileForm:photoVisibility")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.id("j_id0:uploadFileForm:uploadBtn")).click();
+		Thread.sleep(5000);
+		driver.findElement(By.id("j_id0:j_id7:save")).click();
+		
+	}
 
 	}
 
-}
+
