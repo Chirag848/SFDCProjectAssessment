@@ -16,8 +16,7 @@ public class TC29 extends WebdriverUtility{
 		driver.findElement(By.xpath("//a[@class='listRelatedObject contactBlock title']")).click();
 		driver.findElement(By.id("tryLexDialogX")).click();
 		Thread.sleep(2000);
-		driver.findElement(By.xpath("//tr[contains(@class,'dataRow even first')]//td[1]")).click();
-		//driver.findElement(By.xpath("(//th[contains(@class,'')])[4]")).click();
+		driver.findElement(By.xpath("//tr[@class='dataRow even first']//a[1]")).click();
 	}
 
 }

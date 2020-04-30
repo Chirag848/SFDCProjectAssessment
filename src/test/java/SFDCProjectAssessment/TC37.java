@@ -16,15 +16,17 @@ public class TC37 extends WebdriverUtility {
 		waitforloadthepageElement(driver.findElement(By.id("home_Tab")));
 		driver.findElement(By.id("home_Tab")).click();
 		Thread.sleep(2000);
-		driver.findElement(By.xpath("//a[contains(text(),'Saturday April 25, 2020')]")).click();
+		driver.findElement(By.id("tryLexDialogX")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//span[@class='pageDescription']//a")).click();
 		Thread.sleep(2000);
 		WebElement ele = driver.findElement(By.xpath("//a[contains(text(),'4:00 PM')]"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView()", ele);
 		Thread.sleep(5000);
 		ele.click();
 		Thread.sleep(2000);
-		driver.findElement(By.id("tryLexDialogX")).click();
-		Thread.sleep(2000);
+		/*driver.findElement(By.id("tryLexDialogX")).click();
+		Thread.sleep(2000);*/
 		driver.findElement(By.xpath("//img[@class='comboboxIcon']")).click();
 		ArrayList<String> WindowsTabs = new ArrayList<String>(driver.getWindowHandles());
 		System.out.println(WindowsTabs.size());
@@ -32,6 +34,11 @@ public class TC37 extends WebdriverUtility {
 		Thread.sleep(2000);
 		driver.findElement(By.xpath("//a[contains(text(),'Other')]")).click();
 		driver.switchTo().window(WindowsTabs.get(0));
+		Thread.sleep(2000);
+		WebElement date = driver.findElement(By.id("EndDateTime"));
+		date.clear();
+		Thread.sleep(2000);
+		date.sendKeys("5/5/2020");
 		Thread.sleep(2000);
 		driver.findElement(By.xpath("//input[@id='EndDateTime_time']")).click();
 		waitforloadthepageElement(driver.findElement(By.xpath("//div[@id='timePickerItem_38']")));
